@@ -50,8 +50,8 @@ class IngestionRawSUS:
         for i in tqdm(self.dates):
             ano, mes, dia = i.split("-")
             
-            if self.period == 'monthly':
-                ano = ano[-2:]
+            if self.period == 'yearly':
+                ano = ano[-4:]
 
             self.get_data_uf_ano_mes(uf, ano, mes)
 
@@ -67,9 +67,9 @@ class IngestionRawSUS:
 #dt_start = dbutils.widgets.get("dt_start")
 #dt_stop = dbutils.widgets.get("dt_stop")
 #delay = int(dbutils.widgets.get("delay"))
-dt_start = '2023-01-01'
-dt_stop = '2024-05-01'
-datasource = "sihsus"
+dt_start = '2021-01-01'
+dt_stop = '2022-05-01'
+datasource = "sinasc"
 delay = 0
 dt_start = (datetime.datetime.strptime(dt_start, "%Y-%m-%d") - relativedelta(months=delay)).strftime("%Y-%m-01")
 
@@ -95,7 +95,7 @@ ing.auto_execute()
 
 # COMMAND ----------
 
-dbutils.fs.mkdirs("/mnt/datalake/raw/datasus/aux/")
+dbutils.fs.mkdirs("/mnt/datalake/raw/datasus/sinasc/dbc/")
 
 # COMMAND ----------
 

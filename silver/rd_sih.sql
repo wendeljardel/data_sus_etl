@@ -105,3 +105,11 @@ ON t1.ESPEC = t4._c0
 LEFT JOIN curso_databricks_uc.bronze_datasus.grauinstrucao as t5
 ON t1.INSTRU = t5._c0
 ;
+
+-- COMMAND ----------
+
+SELECT * FROM curso_databricks_uc.silver_datasus.sihsus LIMIT 10
+
+-- COMMAND ----------
+
+SELECT COUNT(*) FROM curso_databricks_uc.silver_datasus.sihsus WHERE descEspecialidade = 'obstetrícia' AND ANO_CMPT = '2023'

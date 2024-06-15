@@ -73,3 +73,8 @@ sdf = spark.createDataFrame(df_completa)
 # COMMAND ----------
 
 sdf.write.format("delta").mode("overwrite").saveAsTable("curso_databricks_uc.bronze_datasus.cid")
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT * FROM curso_databricks_uc.bronze_datasus.cid

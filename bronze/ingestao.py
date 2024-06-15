@@ -28,6 +28,7 @@ sihsus_df = spark.read.format("parquet").load(file_path)
 
 # COMMAND ----------
 
+# DBTITLE 1,Adicionando Metadados
 sihsus_df = sihsus_df.withColumn("data_bronze", F.current_date())
 
 
@@ -43,14 +44,10 @@ sihsus_df.write.mode("overwrite").partitionBy('ANO_CMPT').saveAsTable(f'{databas
 # COMMAND ----------
 
 sihsus_df = spark.read.table("curso_databricks_uc.bronze_datasus.sihsus")
-display(sihsus_df.limit(5))
+display(sihsus_df.limit(15))
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC
-# MAGIC SELECT COUNT(AUD_JUST) FROM curso_databricks_uc.bronze_datasus.sihsus WHERE AUD_JUST LIKE '%ESTRANGEIRO%'
-
-# COMMAND ----------
-
-
+# MAGIC SELECT COUNT(AUD_JUST) FROM curso_databricks_uc.bronze_datasus.sihsus WHERE ANO_CMPT = '2023' AND AUD_JUST LIKE '%ESTRANGEIRO%'

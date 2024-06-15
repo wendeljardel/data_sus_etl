@@ -13,7 +13,7 @@ df.columns = df.columns.levels[1]
 
 # COMMAND ----------
 
-df.to_csv("/dbfs/mnt/datalake/datasus/cid/volume1.csv", index=False, sep=";")
+df.to_csv("/dbfs/mnt/datalake/raw/datasus/cid/volume1.csv", index=False, sep=";")
 
 # COMMAND ----------
 

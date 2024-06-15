@@ -23,7 +23,7 @@ path = datasources[datasource][[1]]['target'][[1]]
 partes <- unlist(strsplit(path, "/"))
 partes <- partes[-length(partes)]
 dbc_folder <- paste(partes, collapse = "/")
-parquet_folder <- sub('/dbc', '/parquet/', dbc_folder)
+parquet_folder <- sub('/dbc', '/parquet-1/', dbc_folder)
 parquet_folder <- sub('/dbfs', '', parquet_folder)
 
 print(dbc_folder)

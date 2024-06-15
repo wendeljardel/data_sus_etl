@@ -67,7 +67,7 @@ class IngestionRawSUS:
 #dt_start = dbutils.widgets.get("dt_start")
 #dt_stop = dbutils.widgets.get("dt_stop")
 #delay = int(dbutils.widgets.get("delay"))
-dt_start = '2024-01-01'
+dt_start = '2023-01-01'
 dt_stop = '2024-05-01'
 datasource = "sihsus"
 delay = 0
@@ -95,13 +95,20 @@ ing.auto_execute()
 
 # COMMAND ----------
 
-dbutils.fs.mkdirs("/mnt/datalake/bronze/datasus/sihsus/")
+dbutils.fs.mkdirs("/mnt/datalake/raw/datasus/aux/")
 
 # COMMAND ----------
 
-# MAGIC %fs rm -r /mnt/datalake/raw/datasus/sihsus/dbc/
+# MAGIC %fs rm -r /mnt/datalake/raw/datasus/sihsus/parquet/
 
 # COMMAND ----------
 
 # MAGIC %fs 
 # MAGIC ls mnt/datalake/raw/datasus/sihsus/parquet/
+
+# COMMAND ----------
+
+url = "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/RDPE2303.dbc"
+file_path = "/dbfs/mnt/datalake/raw/datasus/sihsus/dbc/RDPE2303.dbc"
+resp = urllib.request.urlretrieve(url, file_path)
+

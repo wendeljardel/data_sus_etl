@@ -9,7 +9,7 @@
         "read_options":{}
     },
     "sihsus":{
-        "path_full_load":"/mnt/datalake/raw/datasus/sihsus/parquet",
+        "path_full_load":"/mnt/datalake/raw/datasus/sihsus/parquet-1",
         "path_incremental":"/mnt/datalake/raw/datasus/sihsus/parquet",
         "file_format":"parquet",
         "id_fields":["N_AIH", "DT_SAIDA", "IDENT"],
